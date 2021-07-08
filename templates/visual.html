@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='visual.css') }}">
+    </head>
+    <body>
+        <div>
+            <details>
+                <summary>Shape (rows,columns)</summary>
+                <div class="content"> {{data.shape}}</div>
+            </details>
+        </div>
+        <div>
+            <details>
+                <summary>No of Unique categories</summary>
+                <div class="content"> {{data.countUniqueCategories}}</div>
+            </details>
+        </div>
+
+        <div>
+            <details>
+                <summary>Source frequency</summary>
+                <div class="content">
+                    <img width="1600" src="data:image/png;base64, {{data.sourceFrequency}}">
+                </div>
+            </details>
+        </div>
+        <div>
+            <details>
+                <summary>
+                Target Source correlation
+                </summary>
+                {% for tsc in data.targetSourceCorr %}
+                <div>
+                    <img src="data:image/png;base64, {{tsc}}">
+                </div>
+                {% endfor %}
+            </details>
+        </div>
+    </body>
+</html>

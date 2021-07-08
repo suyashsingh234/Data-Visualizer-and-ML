@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    </head>
+    <body>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <div id="formContainer">
+            <form id="form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                
+                <div class="file-upload">
+                    <div class="file-upload-select">
+                        <div class="file-select-button" >Choose File(.xlsx only)</div>
+                    <div class="file-select-name">No file chosen...</div> 
+                    <input type="file" name="file-upload-input" id="file-upload-input">
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <input class="effect-1" id="uploadNumber" name="target", type="number" placeholder="TARGET COLUMN (indexed from 0)"/>
+                    <span class="focus-border"></span>
+                </div>
+
+                <br>
+
+                <div>Source columns</div>
+                <br>
+                <div>
+                    <div id="slider-range"></div>
+                    <br>
+                    <input type="number" name="left"/>
+                    <input type="number" name="right">
+                </div>
+                
+                <div><button type="submit">Submit</button></div>
+            </form>
+        </div>
+
+
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</html>
