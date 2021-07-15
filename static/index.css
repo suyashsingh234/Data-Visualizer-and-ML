@@ -1,12 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 html, body{
   height: 100%;
   width: 100%;
   overflow: hidden;
 
   margin: 0;
-  background: #25A3FF;
+  background: white;
 }
 
+/*landing page*/
+
+#landing{
+	position: absolute;
+    left: 50%;
+    top: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+	text-align: center;
+}
+
+/*form*/
 #formContainer{
     height: 50%;
     width: 50%;
@@ -22,6 +37,8 @@ html, body{
     box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
 
     padding:5;
+
+	display: none;
 }
 
 #formContainer div{
@@ -72,3 +89,55 @@ html, body{
 
 /*source input*/
 
+
+/*select*/
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	outline: 0;
+	box-shadow: none;
+	border: 0 !important;
+	background: #2c3e50;
+	background-image: none;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+	display: none;
+  }
+  /* Custom Select */
+  .select {
+	position: relative;
+	display: flex;
+	width: 20em;
+	height: 3em;
+	line-height: 3;
+	background: #2c3e50;
+	overflow: hidden;
+	border-radius: .25em;
+  }
+  select {
+	flex: 1;
+	padding: 0 .5em;
+	color: #fff;
+	cursor: pointer;
+  }
+  /* Arrow */
+  .select::after {
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 1em;
+	background: #34495e;
+	cursor: pointer;
+	pointer-events: none;
+	-webkit-transition: .25s all ease;
+	-o-transition: .25s all ease;
+	transition: .25s all ease;
+  }
+  /* Transition */
+  .select:hover::after {
+	color: #f39c12;
+  }

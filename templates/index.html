@@ -3,10 +3,10 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     </head>
     <body>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <div id="landing">
+            <h2>Data Visualizer and ML</h2>
+            <button id="proceed"><h2>Proceed</h2></button>
+        </div>
 
         <div id="formContainer">
             <form id="form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
@@ -24,16 +24,15 @@
                     <span class="focus-border"></span>
                 </div>
 
-                <br>
-
-                <div>Source columns</div>
-                <br>
-                <div>
-                    <div id="slider-range"></div>
-                    <br>
-                    <input type="number" name="left"/>
-                    <input type="number" name="right">
+                <div class="select">
+                    <select id="dataType" name="dataType">
+                    <option selected disabled>Data type</option>
+                    <option value="text">Text</option>
+                    <option value="numeric">Numeric</option>
+                    </select>
                 </div>
+
+                <br>
                 
                 <div><button type="submit">Submit</button></div>
             </form>

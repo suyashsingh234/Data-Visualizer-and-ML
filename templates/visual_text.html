@@ -18,18 +18,18 @@
 
         <div>
             <details>
-                <summary>Source frequency</summary>
+                <summary>Class frequency</summary>
                 <div class="content">
-                    <img width="1600" src="data:image/png;base64, {{data.sourceFrequency}}">
+                    {{data.classFrequency | safe}}
                 </div>
             </details>
         </div>
         <div>
             <details>
                 <summary>
-                Target Source correlation
+                Most common words (removed stop words)
                 </summary>
-                {% for tsc in data.targetSourceCorr %}
+                {% for tsc in data.commonWords %}
                 <div>
                     <img src="data:image/png;base64, {{tsc}}">
                 </div>
@@ -41,7 +41,20 @@
                 <summary>
                 ML algorithms training results
                 </summary>
-                {{data.accuracyTable | safe}}
+                {{data.f1scoreandaccuracyTable[1] | safe}}
+            </details>
+        </div>
+
+        <div>
+            <details>
+                <summary>
+                F1 scores
+                </summary>
+                {% for table in data.f1scoreandaccuracyTable[0] %}
+                <div>
+                    {{table | safe}}
+                </div>
+                {% endfor %}
             </details>
         </div>
     </body>
