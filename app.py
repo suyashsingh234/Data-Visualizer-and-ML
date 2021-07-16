@@ -36,18 +36,32 @@ def index():
 def upload():
     targetCol=request.form.get('target')
     select=request.form.get('dataType')
+    isSelect=request.form.get('isSelect')
+    sources=request.form.get('source')
+    sources=sources.split(',')
+    sources=[x.strip() for x in sources]
+    orig=sources.copy()
+    sources.append(targetCol)
 
     file=request.files['file-upload-input']
     file.save(file.filename)
     filename=file.filename
 
-    if not targetCol or not file:
+    df=pd.read_csv(filename)
+    if isSelect:
+        df.drop(df.columns.difference(sources), 1, inplace=True)
+    else:
+        if orig != ['']:
+            df.drop(orig, axis=1, inplace=True)
+            df.drop(df.columns[0], axis=1, inplace=True)
+
+    targetCol=df.columns.get_loc(targetCol)
+
+    if not file:
         return render_template('index.html', error="Enter correct data")
 
     elif select=="numeric":
         d=dict()
-        df=pd.read_csv(filename)
-        targetCol=int(targetCol)
         d["shape"]=getShape(df,targetCol)
         d["countUniqueCategories"]=getCountUniqueCategories(df,targetCol)
         d["sourceFrequency"]=getSourceFrequency(df,targetCol)
@@ -57,8 +71,6 @@ def upload():
 
     else:
         d=dict()
-        df=pd.read_csv(filename)
-        targetCol=int(targetCol)
         d["shape"]=getShape(df,targetCol)
         d["countUniqueCategories"]=getCountUniqueCategories(df,targetCol)
         d["classFrequency"]=getClassFrequency(df,targetCol)
@@ -85,6 +97,7 @@ def getCommonWords(df,targetCol):
         sourceCol=0
         if targetCol==0:
             sourceCol=1
+        #df2.drop(df2.columns[0], axis=1, inplace=True)
         df2[df2.columns[sourceCol]] = df2[df2.columns[sourceCol]].apply(lambda x: ' '.join([word for word in x.split() if word.lower() not in (stop)]))
         counterList=Counter(" ".join(df2[df2.columns[sourceCol]]).split()).most_common(10)
         word=[]

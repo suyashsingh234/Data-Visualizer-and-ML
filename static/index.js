@@ -13,3 +13,12 @@ document.getElementById('proceed').addEventListener('click',function(){
 	document.getElementById('landing').style.display='none'
 	document.getElementById('formContainer').style.display='block'
 })
+
+document.getElementById('isSelect').addEventListener('click',function(){
+	if(document.getElementById('isSelect').checked){
+		document.getElementById('uploadSource').placeholder="INPUT COLUMNS TO SELECT(comma separate)"
+	}
+	else{
+		document.getElementById('uploadSource').placeholder="INPUT COLUMNS TO DROP(comma separate)"
+	}
+})

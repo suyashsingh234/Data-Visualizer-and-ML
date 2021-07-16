@@ -20,9 +20,18 @@
                 </div>
 
                 <div class="col-3">
-                    <input class="effect-1" id="uploadNumber" name="target", type="number" placeholder="TARGET COLUMN (indexed from 0)"/>
+                    <input class="effect-1" id="uploadNumber" name="target", type="text" placeholder="TARGET COLUMN NAME"/>
                     <span class="focus-border"></span>
                 </div>
+                
+                <div class="col-3">
+                    <input class="effect-1" id="uploadSource" name="source", type="text" placeholder="INPUT COLUMNS TO SELECT(comma separate)"/>
+                    <span class="focus-border"></span>
+                </div>
+                <label class="switch">
+                    <input id="isSelect" name="isSelect" type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
 
                 <div class="select">
                     <select id="dataType" name="dataType">
